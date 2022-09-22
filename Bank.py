@@ -1,14 +1,19 @@
 import random
 
-class Wdata:
+WOTD = []
 
-    WOTD = []
+data = open("data.txt", "r")
 
-    def steve (self, data :str):
-        data = "lovely"
-        print(data.read())
+reader = data.read()
 
-        print(data)
-        WOTD = WOTD.append()
 
-        return data
+WOTD = reader.split("\n")
+
+data.close()
+
+Key = random.choice(WOTD)
+
+
+print(WOTD)
+
+print(Key)
