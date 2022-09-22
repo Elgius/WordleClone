@@ -1,3 +1,7 @@
 
 __pycache__/wordle.cpython-310.pyc
 __pycache__/letter_state.cpython-310.pyc
+__pycache__/letter_state.cpython-310.pyc
+__pycache__/wordle.cpython-310.pyc
+
+*.pyc
