@@ -14,14 +14,20 @@ def main():
 
     while wordle.can_attempt:
 
-        x = input("\nWhat do you think todays word is?:  \n")
+        x = input("\nWhat do you think todays word is?:  \n").upper()
 
         if len(x) != wordle.MAX_ATTEMPTS :
             print(Fore.RED + f"Your entry must be {wordle.MAX_ATTEMPTS} characters" + Fore.RESET)
             continue
 
-        wordle.attempt(x)
+        
 
+        if not x in word_set :
+            print(Fore.RED + f"Your entry must be a proper word" + Fore.RESET)
+            continue
+
+
+        wordle.attempt(x)
         display_word(wordle)
 
         
@@ -69,7 +75,7 @@ def load_word(path : str):
     word_set = set()
     with open(path, "r") as f:
         for line in f.readlines():
-            word = line.strip().upper()
+            word = line.strip() .upper()
             word_set.add(word)
 
         return word_set
