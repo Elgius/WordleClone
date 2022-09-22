@@ -30,7 +30,9 @@ def main():
             print("you have solved the puzzle!")
         else:
             print("\n You have failed to solve the puzzle \n")
-            print(f"\n Word was {secret}")
+        
+        if (wordle.remaining_attempts == 0):
+            print(f"the word was {secret}")
 
 
 def display_word(wordle: Wordle):
