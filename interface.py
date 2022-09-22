@@ -1,14 +1,15 @@
 from typing import List
 from wordle import Wordle
 from letter_state import letterState
+import random
 #from Bank import Wdata
 
 from colorama import Fore
 
 def main():
-    print("hello, welcome to woorld!!!")
-    #oof = star
-    wordle = Wordle("LOVED")
+    word_set = load_word("data.txt")
+    secret = random.choice(list(word_set))
+    wordle = Wordle(secret)
 
 
     while wordle.can_attempt:
@@ -29,6 +30,7 @@ def main():
             print("you have solved the puzzle!")
         else:
             print("\n You have failed to solve the puzzle \n")
+            print(f"\n Word was {secret}")
 
 
 def display_word(wordle: Wordle):
@@ -60,6 +62,17 @@ def convert_result_to_color(result: List[letterState]):
 
     return " ".join(result_with_color)
         
+
+def load_word(path : str):
+    word_set = set()
+    with open(path, "r") as f:
+        for line in f.readlines():
+            word = line.strip().upper()
+            word_set.add(word)
+
+        return word_set
+
+
 
 
 

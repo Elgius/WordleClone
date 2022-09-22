@@ -1,19 +1,26 @@
 import random
 
-WOTD = []
-
-data = open("data.txt", "r")
-
-reader = data.read()
 
 
-WOTD = reader.split("\n")
+class bank:
+    def stuff(self):
+        WOTD = []
 
-data.close()
+        data = open("data.txt", "r")
 
-Key = random.choice(WOTD)
+        reader = data.read()
 
 
-print(WOTD)
+        WOTD = reader.split("\n")
 
-print(Key)
+        data.close()
+
+        Key = random.choice(WOTD)
+
+        self.key = Key
+
+        return Key
+
+word = bank()
+
+print(word)
