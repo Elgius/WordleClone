@@ -16,29 +16,32 @@ def main():
 
         x = input("\nWhat do you think todays word is?:  \n").upper()
 
-        if len(x) != wordle.MAX_ATTEMPTS :
-            print(Fore.RED + f"Your entry must be {wordle.MAX_ATTEMPTS} characters" + Fore.RESET)
-            continue
+        if(len(x) != wordle.MAX_ATTEMPTS): 
+            x = "error1"
 
+        elif not x in word_set:
+            x = "error2"
         
+        match x:
 
-        if not x in word_set :
-            print(Fore.RED + f"Your entry must be a proper word" + Fore.RESET)
-            continue
+            case "error1": print(Fore.RED + f"Your entry must be {wordle.MAX_ATTEMPTS} characters" + Fore.RESET)
 
+            case "error2":  print(Fore.RED + f"Your entry must be a proper word" + Fore.RESET)
 
-        wordle.attempt(x)
-        display_word(wordle)
+            case _:
 
-        
-        
-        if wordle.is_solved:
-            print("you have solved the puzzle!")
-        else:
-            print("\n You have failed to solve the puzzle \n")
-        
-        if (wordle.remaining_attempts == 0):
-            print(f"the word was {secret}")
+                wordle.attempt(x)
+                display_word(wordle)
+
+                
+                
+                if wordle.is_solved:
+                    print("you have solved the puzzle!")
+                else:
+                    print("\n You have failed to solve the puzzle \n")
+                
+                if (wordle.remaining_attempts == 0):
+                    print(f"the word was {secret}")
 
 
 def display_word(wordle: Wordle):
