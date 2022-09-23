@@ -5,3 +5,8 @@ sadly
 great
 storm
 sunny
+extra
+eager
+stone
+stick
+apple
