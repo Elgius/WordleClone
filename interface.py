@@ -10,6 +10,7 @@ def main():
     word_set = load_word("data.txt")
     secret = random.choice(list(word_set))
     wordle = Wordle(secret)
+    #stop = 0
 
 
     while wordle.can_attempt:
@@ -18,15 +19,22 @@ def main():
 
         if(len(x) != wordle.MAX_ATTEMPTS): 
             x = "error1"
+            #stop = stop +1
 
         elif not x in word_set:
+            error = x
             x = "error2"
+            #stop = stop +1
+
+        #elif (stop == 3):
+            #wordle.MAX_LENGTH = 6
+            #print("Plese read the rules and try again")
         
         match x:
 
             case "error1": print(Fore.RED + f"Your entry must be {wordle.MAX_ATTEMPTS} characters" + Fore.RESET)
 
-            case "error2":  print(Fore.RED + f"Your entry must be a proper word" + Fore.RESET)
+            case "error2":  print(Fore.RED + f"the word: {error} is not found in our dictionary" + Fore.RESET)
 
             case _:
 
